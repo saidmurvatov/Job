@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset = “utf-8”>
+     <title>Dictionary</title>
+     <style type="text/css">
+
+          body{
+               background-color: #ffffff;
+               margin: 0px;
+               margin-top: 0px;
+               padding: 0px;
+
+          }
+
+          #main{
+          	width: 100%;
+          	height: 100%;
+          	background-color: #ffffff;
+          	margin: 0px;
+            overflow: auto;
+            display: inline-block;
+            z-index: 0;
+            position: absolute;
+          }
+
+          
+
+          #upperPanel{
+          	top: 0px;
+          	margin: 0px;
+          	padding: 1px;
+          	width: 100%;
+          	background-color: rgb(79, 96, 99);
+          	text-align: center;
+            position: relative;
+            color: #ffffff;
+          }
+
+          #innerDiv{
+          	display: block;
+          	width: 500px;
+          	margin-right: auto;
+          	margin-left: auto;
+          	margin-top: -7%;
+          	background-color: rgb(245, 245, 245);
+            border-radius: 15px;
+            position: relative;
+            z-index: 1;
+          }
+
+          .innerDiv{
+          	padding-bottom: 15px;
+            padding-top: 15px;
+          }
+
+          #buttons{
+          	width: 40px;
+          	height: 100px;
+          	margin-top: 5%;
+          	margin-left: 15%;
+            position: relative;
+            z-index: 2;
+            
+          }          
+
+          .img{
+          	width: 30px;
+          	height: 30px;
+          }
+
+          
+
+          #plusBut{
+          	background-color: #ffffff;
+          	border:0px;
+          	border-radius: 15%;
+            outline: none;
+          }
+
+          #minusBut{
+          	background-color: #ffffff;
+          	border:0px;
+          	border-radius: 15%;
+            outline: none;
+          }
+
+          
+
+          .request{
+            width: 300px;
+            height: 300px;
+            display: block;
+            margin-top: 5%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgb(79, 96, 99);
+            border-radius: 20%;
+            position: relative;
+            z-index: 500;
+            opacity: 1;
+          }
+
+          .but{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            outline: none;
+            font-style: italic;
+            color: #ffffff;
+            border: 0px;
+            margin-top: 2%;
+            font-size: 20px;
+            background-color: rgb(79, 96, 99);
+          }
+
+          .ta{
+            padding: 5px;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 10px;
+            height: 75px;
+            width: 400px;
+            resize: none;
+            border-radius: 7.5px;
+            border-color: lightgrey;
+          }
+
+          .inPhoto{
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 10px;
+            width: 400px;
+          }
+
+          .file{
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 10px;
+            width: 400px;
+          }
+
+          #upload{
+            width: 70px;
+            height: 35px;
+            border-radius: 17.5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto; 
+          }
+
+          #upBut{
+            border: 0px;
+            width: 70px;
+            height: 35px;
+            border-radius: 17.5px;
+            color: #ffffff;
+            background-color: rgb(79, 96, 99);
+          }
+
+          #upload{
+          	margin-top: 20px;
+          }
+
+          
+          
+
+          a, u {
+    		 text-decoration: none;
+    		 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			   font-size: 14px;
+			   font-style: normal;
+			   font-variant: normal;
+			   font-weight: 400;
+			   line-height: 20px;
+		  }
+
+        p {
+			   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			   font-size: 14px;
+			   font-style: normal;
+			   font-variant: normal;
+			   font-weight: 400;
+			   line-height: 20px;
+		  }
+
+		  h1{
+			 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			 font-size: 24px;
+			 font-style: italic;
+			 font-variant: normal;
+			 font-weight: 300;
+			 line-height: 26.4px;
+		}
+
+		
+
+		
+
+     </style>
+     
+</head>
+
+<body>
+
+	<div id="main">
+
+
+		<div id="upperPanel">
+			<h1 class="text">Cyberpunq</h1>
+		</div>
+
+    
+
+		<div id="buttons">
+			<button id="plusBut" ><img class="img" src="plus.png"></button>
+			<button id="minusBut" ><img class="img" src="minus.png"></button>
+		</div>
+
+		<div id="innerDiv">
+			
+		</div>
+
+    <div id="upload">
+      <button id="upBut">Upload</button>
+    </div>
+
+    
+    
+
+
+
+
+</div>
+
+    <script type="text/javascript">
+    var i = 0;
+    var upload = document.getElementById("upBut");
+    var but = document.getElementById("plusBut");
+    upload.style.visibility = 'hidden';
+
+    but.onclick = function(){
+    		var mainDiv = document.getElementById("main");
+    		mainDiv.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+        
+        
+        var innerDiv = document.getElementById("innerDiv");
+        mainDiv.removeChild(innerDiv);
+
+        var buttons = document.getElementById("buttons");
+        mainDiv.removeChild(buttons);
+
+        var uploadBut = document.getElementById("upload");
+        mainDiv.removeChild(uploadBut);
+
+    	var div = document.createElement('div');
+        div.className = "request";
+
+
+
+        
+
+        
+
+        var b1 = document.createElement('button');
+        var b2 = document.createElement('button');
+        var b3 = document.createElement('button');
+
+        var p1 = document.createElement('p');
+        var p2 = document.createElement('p');
+        var p3 = document.createElement('p');
+
+        p1.className = "p";
+        p2.className = "p";
+        p3.className = "p";
+
+        var tn1 = document.createTextNode("Text");
+        var tn2 = document.createTextNode("Photo");
+        var tn3 = document.createTextNode("File");
+
+        var i1 = document.createElement('img');
+        var i2 = document.createElement('img');
+        var i3 = document.createElement('img');
+
+        i1.className = "img";
+        i2.className = "img";
+        i3.className = "img";
+
+        i1.src = "text.png";
+        i2.src = "photo.png";
+        i3.src = "file.png";
+
+        p1.appendChild(i1);
+        p2.appendChild(i2);
+        p3.appendChild(i3);
+
+        b1.appendChild(p1);
+        b2.appendChild(p2);
+        b3.appendChild(p3);
+
+        b1.appendChild(tn1);
+        b2.appendChild(tn2);
+        b3.appendChild(tn3);
+
+        b1.className = "but";
+        b2.className = "but";
+        b3.className = "but";
+
+        
+
+        div.appendChild(b1);
+        div.appendChild(b2);
+        div.appendChild(b3);
+
+        mainDiv.appendChild(div);
+
+        b1.onclick = function(){
+          mainDiv.removeChild(div);
+          mainDiv.appendChild(buttons);
+          mainDiv.appendChild(innerDiv);
+          mainDiv.appendChild(uploadBut);
+
+          mainDiv.style.backgroundColor = "#ffffff";
+
+          var ta = document.createElement('textarea');
+          ta.placeholder = "Enter Text";
+
+          ta.className = "ta";
+          ta.id = "input" + i;
+          i++;
+
+          innerDiv.className = "innerDiv";
+          innerDiv.style.visibility = 'visible';
+          upload.style.visibility = 'visible';
+
+          var height = innerDiv.offsetHeight;
+          var newHeight = height + 75;
+          innerDiv.style.height = newHeight + 'px';
+
+
+
+          innerDiv.appendChild(ta);
+        }
+
+        b2.onclick = function(){
+          mainDiv.removeChild(div);
+          mainDiv.appendChild(buttons);
+          mainDiv.appendChild(innerDiv);
+          mainDiv.appendChild(uploadBut);
+          mainDiv.style.backgroundColor = "#ffffff";
+
+          var inPhoto = document.createElement('input');
+          inPhoto.type = "file";
+          inPhoto.accept = ".jpg, .png";
+          inPhoto.className = "inPhoto";
+          inPhoto.id = "input" + i;
+          i++;
+
+          innerDiv.className = "innerDiv";
+          innerDiv.style.visibility = 'visible';
+          upload.style.visibility = 'visible';
+
+          var height = innerDiv.offsetHeight;
+          var newHeight = height + 9;
+          innerDiv.style.height = newHeight + 'px';
+          
+
+
+          innerDiv.appendChild(inPhoto);
+        }
+
+        b3.onclick = function(){
+          mainDiv.removeChild(div);
+          mainDiv.appendChild(buttons);
+          mainDiv.appendChild(innerDiv);
+          mainDiv.appendChild(uploadBut);
+
+          mainDiv.style.backgroundColor = "#ffffff";
+
+          var file = document.createElement('input');
+          file.type = "file";
+          file.className = "file";
+          file.id = "input" + i;
+          i++;
+
+          innerDiv.className = "innerDiv";
+          innerDiv.style.visibility = 'visible';
+          upload.style.visibility = 'visible';
+
+          var height = innerDiv.offsetHeight;
+          var newHeight = height + 9;
+          innerDiv.style.height = newHeight + 'px';
+
+          innerDiv.appendChild(file);
+        }
+
+      }
+
+        var but2 = document.getElementById("minusBut").onclick = function(){
+      if(i == 0){
+        return;
+      }
+      else{
+        var input = document.getElementById("input" + (i-1));
+
+        
+        var height = innerDiv.clientHeight;
+
+        if(input.offsetHeight==87){
+        	
+        var newHeight = height - 135;
+        innerDiv.style.height = newHeight + 'px';
+    	}
+
+    	else{
+    		
+    		var newHeight = height - 69;
+        	innerDiv.style.height = newHeight + 'px';
+    	}
+        innerDiv.removeChild(input);
+        i--;
+
+        if(i==0){
+        	upload.style.visibility = 'hidden';
+        	innerDiv.style.visibility = 'hidden';
+
+        	innerDiv.style.height = 0 + "px";
+        }
+      }
+    }
+
+
+    
+
+    upload.onclick = function(){
+      var fd = new FormData();
+
+    for(c=0; c<=i; c++){
+
+      var inputVal = document.getElementById("input" + (i-1)).value;
+
+      fd.append("input", inputVal);
+    } 
+
+    var newItemXhr = new XMLHttpRequest();
+	newItemXhr.open("POST", "posting.php", true);
+	newItemXhr.send(fd);
+
+		newItemXhr.onreadystatechange = function()
+		{
+			if(newItemXhr.readyState == XMLHttpRequest.DONE)
+			{
+				newItemXhr.onreadystatechange = null;
+				alert("Uploaded");
+				location.reload(true);
+			}
+		}
+
+    	
+ }   		
+
+    	
+
+
+
+
+
+
+
+
+
+
+
+    /*var data = '{ "Word": ["1firstnjksdjndkjnsjdbhjbvdshjkfbvfhbjhdsnjkjknknfjccccccccccccccccccvbvjdhbsdhbcbhjskbfiulweadjhsnfdsdsjdhbjfbdhsbffjhbdshjbhbksnnjx", "2second", "3third", "4forth"], "Descript": ["first des","second des","third des","forth des"] }'
+
+    var data = JSON.parse(data);
+
+    var j = Object.keys(data.Word).length;
+
+    var main = document.getElementById("wordList");
+
+    //alert(j)
+
+    for(var i=0; i<j; i++){
+      var div = document.createElement('div');
+      div.className = "innerDiv";
+
+      var wordP = document.createElement('p');
+      
+      wordP.className = "word";
+      
+
+      var wordT = document.createTextNode(data.Word[i] + "-" + data.Descript[i]);
+      
+
+      wordP.appendChild(wordT);
+      
+
+      div.appendChild(wordP);
+      
+
+
+      main.appendChild(div);
+    }*/
+
+    </script>
+</body>
+
+
+
+
+
+</html>
